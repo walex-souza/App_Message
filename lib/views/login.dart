@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/models/User.model.dart';
 import 'package:whatsapp/views/register.dart';
 
-import 'home.dart';
-
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -53,12 +51,7 @@ class _LoginState extends State<Login> {
       password: user.password,
     )
         .then((FirebaseUser) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Home(),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, "/home");
     }).catchError((error) {
       setState(() {
         _messageErroRegister = "Erro ao fazer login, verifique Email e senha!";
@@ -73,14 +66,10 @@ class _LoginState extends State<Login> {
     FirebaseUser firebaseUser = await auth.currentUser();
 
     if (firebaseUser != null) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Home(),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, "/home");
     }
   }
+
   @override
   void initState() {
     _checkUserLogin();

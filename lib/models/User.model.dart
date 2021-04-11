@@ -1,31 +1,38 @@
-class User{
+class User {
+  String _idUser;
   String _name;
   String _email;
   String _password;
+  String _urlImage;
 
   User();
 
-  Map<String, dynamic> toMap(){
+  Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {
-      "name" : this.name,
-      "email" : this.email
+      "name": this.name,
+      "email": this.email,
+      "urlImage": this._urlImage
     };
     return map;
   }
 
-  
- String get name => this._name;
+  String get idUser => this._idUser;
 
- set name(String value) => this._name = value;
+  set idUser(String value) => this._idUser = value;
 
- String get email => this._email;
+  String get name => this._name;
 
- set email(String value) => this._email = value;
+  set name(String value) => this._name = value;
 
- String get password => this._password;
+  String get email => this._email;
 
- set password(String value) => this._password = value;
+  set email(String value) => this._email = value;
 
+  String get password => this._password;
 
+  set password(String value) => this._password = value;
 
+  String get urlImage => this._urlImage;
+
+  set urlImage(String value) => this._urlImage = value;
 }

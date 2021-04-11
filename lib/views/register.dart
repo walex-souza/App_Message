@@ -3,8 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/models/User.model.dart';
 
-import 'home.dart';
-
 class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
@@ -62,19 +60,13 @@ class _RegisterState extends State<Register> {
       password: user.password,
     )
         .then((FirebaseUser) {
-
-          Firestore db = Firestore.instance;
-          db.collection("Usuarios")
+      Firestore db = Firestore.instance;
+      db
+          .collection("Usuarios")
           .document(FirebaseUser.uid)
           .setData(user.toMap());
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Home(),
-        ),
-      );
-
+      Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
     }).catchError((error) {
       setState(() {
         messageErroRegister = "Erro ao cadastrar usuário, verifique os campos!";

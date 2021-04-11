@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.fluterx.whatsapp">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="whatsapp"
         android:icon="@mipmap/ic_launcher">
