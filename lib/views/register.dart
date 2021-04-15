@@ -77,103 +77,112 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff075E54),
       appBar: AppBar(
-        backgroundColor: Color(0xff075E54),
+        backgroundColor: Color(0xff050A6A),
         centerTitle: true,
         title: Text("Cadastro"),
       ),
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Image.asset(
-                  "assets/usuario.png",
-                  width: 200,
-                  height: 150,
-                ),
-                SizedBox(height: 20),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextField(
-                    controller: textEditingControllerName,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32)),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Nome:"),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color(0xff050A6A),
+              Color(0xff03063D),
+            ])),
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image.asset(
+                    "assets/logo_2.png",
+                    height: 300,
                   ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextField(
-                    controller: textEditingControllerEmail,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32)),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "E-mail:"),
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: TextField(
+                      controller: textEditingControllerName,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "Nome:"),
+                    ),
                   ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextField(
-                    controller: textEditingControllerPassword,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32)),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Senha:"),
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: TextField(
+                      controller: textEditingControllerEmail,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "E-mail:"),
+                    ),
                   ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.green),
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 16,
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: TextField(
+                      controller: textEditingControllerPassword,
+                      obscureText: true,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "Senha:"),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xff2075C1)),
+                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 16,
+                          ),
+                        ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32),
+                          ),
                         ),
                       ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        ),
+                      onPressed: () {
+                        _validateRegister();
+                      },
+                      child: Text(
+                        "Cadastrar",
+                        style: TextStyle(fontSize: 18),
                       ),
                     ),
-                    onPressed: () {
-                      _validateRegister();
-                    },
+                  ),
+                  SizedBox(height: 5),
+                  Center(
                     child: Text(
-                      "Cadastrar",
-                      style: TextStyle(fontSize: 18),
+                      messageErroRegister,
+                      style: TextStyle(color: Colors.white),
                     ),
-                  ),
-                ),
-                SizedBox(height: 5),
-                Center(
-                  child: Text(
-                    messageErroRegister,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

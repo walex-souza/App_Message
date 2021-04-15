@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/models/User.model.dart';
 import 'package:whatsapp/views/home.dart';
 import 'package:whatsapp/views/login.dart';
 import 'package:whatsapp/views/pages/screenMessage.dart';

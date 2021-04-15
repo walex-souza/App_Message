@@ -100,8 +100,11 @@ class _ScreenMessageState extends State<ScreenMessage> {
   }
 
   _sendImage() async {
+    final picker = ImagePicker();
     File imagemSelected;
-    imagemSelected = await ImagePicker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    imagemSelected = File(pickedFile.path);
+
     _upImage = true;
     String nameImage = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -192,8 +195,11 @@ class _ScreenMessageState extends State<ScreenMessage> {
               return Center(
                 child: Column(
                   children: [
-                    Text("Carregando mensagens..."),
-                    CircularProgressIndicator()
+                    Text("Carregando mensagens...",
+                        style: TextStyle(color: Colors.white)),
+                    CircularProgressIndicator(
+                      backgroundColor: Colors.white,
+                    )
                   ],
                 ),
               );
@@ -220,10 +226,10 @@ class _ScreenMessageState extends State<ScreenMessage> {
                             MediaQuery.of(context).size.width * 0.8;
 
                         Alignment alignment = Alignment.centerRight;
-                        Color color = Color(0xffD2FFA5);
+                        Color color = Color(0xff2075C1);
                         if (_idLoggedUser != item["idUser"]) {
                           alignment = Alignment.centerLeft;
-                          color = Colors.white;
+                          color = Color(0xff090F93);
                         }
                         return Align(
                           alignment: alignment,
@@ -239,6 +245,7 @@ class _ScreenMessageState extends State<ScreenMessage> {
                                     ? Text(
                                         item["message"],
                                         style: TextStyle(
+                                          color: Colors.white,
                                           fontSize: 18,
                                         ),
                                       )
@@ -275,14 +282,17 @@ class _ScreenMessageState extends State<ScreenMessage> {
                       prefixIcon: IconButton(
                           icon: _upImage == true
                               ? CircularProgressIndicator()
-                              : Icon(Icons.camera_alt),
+                              : Icon(
+                                  Icons.camera_alt,
+                                  color: Color(0xff090F93),
+                                ),
                           onPressed: _sendImage)),
                 ),
               ),
             ),
           ),
           FloatingActionButton(
-            backgroundColor: Color(0xff075E54),
+            backgroundColor: Color(0xff090F93),
             child: Icon(
               Icons.send,
               color: Colors.white,
@@ -320,7 +330,7 @@ class _ScreenMessageState extends State<ScreenMessage> {
     // );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff075E54),
+        backgroundColor: Color(0xff050A6A),
         title: Row(
           children: [
             CircleAvatar(
@@ -333,13 +343,15 @@ class _ScreenMessageState extends State<ScreenMessage> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/fundo.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color(0xff050A6A),
+              Color(0xff03063D),
+            ])),
+        padding: EdgeInsets.all(16),
         child: SafeArea(
           child: Container(
             child: Column(

@@ -60,8 +60,13 @@ class _ScreenContactState extends State<ScreenContact> {
             return Center(
               child: Column(
                 children: [
-                  Text("Carregando contatos..."),
-                  CircularProgressIndicator()
+                  Text(
+                    "Carregando contatos...",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                  )
                 ],
               ),
             );
@@ -93,6 +98,7 @@ class _ScreenContactState extends State<ScreenContact> {
                     title: Text(
                       user.name,
                       style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),

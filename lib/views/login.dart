@@ -80,103 +80,113 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff075E54),
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Image.asset(
-                  "assets/logo.png",
-                  width: 200,
-                  height: 150,
-                ),
-                SizedBox(height: 20),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextField(
-                    controller: _textEditingControllerEmail,
-                    autofocus: true,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32)),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "E-mail:"),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color(0xff050A6A),
+              Color(0xff03063D),
+            ])),
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image.asset(
+                    "assets/logo_flutter.png",
+                    height: 250,
                   ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextField(
-                    obscureText: true,
-                    controller: _textEditingControllerPassword,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32)),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Senha:"),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.green),
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 16,
-                        ),
-                      ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      _validateRegister();
-                    },
-                    child: Text(
-                      "Entrar",
-                      style: TextStyle(fontSize: 18),
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: TextField(
+                      controller: _textEditingControllerEmail,
+                      autofocus: true,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "E-mail:"),
                     ),
                   ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 10),
-                    child: GestureDetector(
-                      child: Text(
-                        "Não tem conta ? Cadastre-se!",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Register(),
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: TextField(
+                      obscureText: true,
+                      controller: _textEditingControllerPassword,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "Senha:"),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xff2075C1)),
+                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 16,
                           ),
-                        );
+                        ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        _validateRegister();
                       },
+                      child: Text(
+                        "Entrar",
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 5),
-                Center(
-                  child: Text(
-                    _messageErroRegister,
-                    style: TextStyle(color: Colors.white),
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: GestureDetector(
+                        child: Text(
+                          "Não tem conta ? Cadastre-se!",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Register(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
-                )
-              ],
+                  SizedBox(height: 5),
+                  Center(
+                    child: Text(
+                      _messageErroRegister,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

@@ -60,8 +60,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xff075E54),
-        title: Text("WhatsApp"),
+        backgroundColor: Color(0xff050A6A),
+        title: Text(""),
         bottom: TabBar(
             indicatorColor: Colors.white,
             indicatorWeight: 4,
@@ -69,7 +69,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             labelStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             tabs: [
               Tab(
-                text: "Conversas",
+                text: "Mensagens",
               ),
               Tab(
                 text: "Contatos",
@@ -89,10 +89,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           )
         ],
       ),
-      body: TabBarView(controller: _tabController, children: [
-        ScreenTalk(),
-        ScreenContact(),
-      ]),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color(0xff050A6A),
+              Color(0xff03063D),
+            ])),
+        child: TabBarView(controller: _tabController, children: [
+          ScreenTalk(),
+          ScreenContact(),
+        ]),
+      ),
     );
   }
 }

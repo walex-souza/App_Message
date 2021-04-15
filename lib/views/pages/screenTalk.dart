@@ -88,6 +88,7 @@ class _ScreenTalkState extends State<ScreenTalk> {
                   child: Text(
                     "Você não tem nenhuma mensagem ainda :(",
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -130,12 +131,14 @@ class _ScreenTalkState extends State<ScreenTalk> {
                     title: Text(
                       name,
                       style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
                     subtitle: Text(
                       type == "text" ? message : "Imagem...",
+                      style: TextStyle(color: Colors.white),
                     ),
                   );
                 },

@@ -19,14 +19,16 @@ class _ScreenSettingsState extends State<ScreenSettings> {
 
   Future _selectedImage(String image) async {
     File selectedImage;
+    final _picker = ImagePicker();
 
     switch (image) {
       case "camera":
-        selectedImage = await ImagePicker.pickImage(source: ImageSource.camera);
+        final _pickedFile = await _picker.getImage(source: ImageSource.camera);
+        selectedImage = File(_pickedFile.path);
         break;
       case "galeria":
-        selectedImage =
-            await ImagePicker.pickImage(source: ImageSource.gallery);
+        final _pickedFile = await _picker.getImage(source: ImageSource.gallery);
+        selectedImage = File(_pickedFile.path);
         break;
       default:
     }
@@ -120,7 +122,7 @@ class _ScreenSettingsState extends State<ScreenSettings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff075E54),
+        backgroundColor: Color(0xff050A6A),
         centerTitle: true,
         title: Text("Configurações"),
       ),
@@ -147,8 +149,9 @@ class _ScreenSettingsState extends State<ScreenSettings> {
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.green),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Color(0xff050A6A),
+                        ),
                         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                           EdgeInsets.symmetric(
                             horizontal: 10,
@@ -173,8 +176,9 @@ class _ScreenSettingsState extends State<ScreenSettings> {
                     SizedBox(width: 30),
                     ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.green),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Color(0xff050A6A),
+                        ),
                         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                           EdgeInsets.symmetric(
                             horizontal: 10,
@@ -216,8 +220,9 @@ class _ScreenSettingsState extends State<ScreenSettings> {
                 SizedBox(height: 10),
                 ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.green),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Color(0xff050A6A),
+                    ),
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                       EdgeInsets.symmetric(
                         horizontal: 16,
