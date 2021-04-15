@@ -13,7 +13,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   _selectedMenuItem(String selectedItem) {
     switch (selectedItem) {
-      case "Configuraçôes":
+      case "Configurações":
         Navigator.pushNamed(context, "/settings");
         break;
       case "Deslogar":
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   List<String> itensMenu = [
-    "Configuraçôes",
+    "Configurações",
     "Deslogar",
   ];
 
